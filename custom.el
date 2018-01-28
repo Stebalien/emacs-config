@@ -16,18 +16,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ag-ignore-list
-   (quote
-    ("\\\\*.dll" "\\\\*.png" "\\\\*.jpeg" "\\\\*.exe" "\\\\*.csproj")))
  '(auto-save-default nil)
- '(browse-url-browser-function (quote browse-url-chrome))
- '(browse-url-chrome-program
-   "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe")
- '(c-tab-always-indent nil)
  '(case-fold-search t)
  '(column-number-mode t)
- '(compilation-error-regexp-alist (quote (ant bash java gnu gcc-include lcc perl)))
- '(compilation-error-regexp-systems-list (quote (gnu perl)))
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(dabbrev-case-fold-search nil)
  '(desktop-save-mode t)
@@ -36,17 +27,10 @@
  '(ediff-split-window-function (quote split-window-vertically))
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
  '(electric-pair-mode t)
- '(elpy-modules
-   (quote
-    (elpy-module-company elpy-module-eldoc elpy-module-flymake elpy-module-pyvenv elpy-module-yasnippet elpy-module-django elpy-module-sane-defaults)))
- '(elpy-rpc-python-command "C:/Python36/python.exe")
  '(eshell-history-size 1024)
- '(flycheck-color-mode-line-face-to-color (quote mode-line-buffer-id))
- '(flycheck-flake8-maximum-line-length 200)
  '(font-lock-maximum-size nil)
  '(git-commit-style-convention-checks (quote (non-empty-second-line overlong-summary-line)))
  '(global-font-lock-mode t nil (font-lock))
- '(gud-pdb-command-name "python -m pdb")
  '(history-delete-duplicates t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -61,8 +45,6 @@
  '(magit-pull-arguments nil)
  '(magit-repository-directories (quote (("~/repos" . 1))))
  '(make-backup-files nil)
- '(omnisharp-auto-complete-popup-help-delay 1)
- '(omnisharp-server-executable-path "c:/omnisharp-roslyn-v1.27.2/OmniSharp.exe")
  '(org-catch-invisible-edits (quote show))
  '(org-clock-into-drawer "CLOCKING")
  '(org-log-done (quote time))
@@ -74,19 +56,8 @@
      ("org" . "http://orgmode.org/elpa/"))))
  '(package-selected-packages
    (quote
-    (yasnippet-snippets avy ivy-hydra counsel-etags counsel-projectile counsel which-key xterm-color ibuffer-projectile org-projectile projectile realgud python-docstring pylint flycheck-pyflakes elpy company-jedi company org-autolist org-bullets git-timemachine magit-find-file magit-filenotify magit git-commit powerline use-package)))
+    (avy ivy-hydra counsel ivy org-autolist org-bullets git-timemachine magit-find-file magit-filenotify magit git-commit which-key powerline diminish auto-compile use-package)))
  '(powerline-display-hud nil)
- '(projectile-completion-system (quote ivy))
- '(projectile-mode-line (quote (:eval (format " [%s]" (projectile-project-name)))))
- '(python-indent-trigger-commands (quote (yas-expand yas/expand)))
- '(python-shell-completion-setup-code "from IPython.core.completerlib import module_completion")
- '(python-shell-completion-string-code
-   "';'.join(get_ipython().Completer.all_completions('''%s'''))
-")
- '(python-shell-interpreter "ipython")
- '(python-shell-interpreter-args "-i --simple-prompt")
- '(python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: ")
- '(python-shell-prompt-regexp "In \\[[0-9]+\\]: ")
  '(savehist-additional-variables (quote (kill-ring search-ring regexp-search-ring)))
  '(savehist-file "~/.emacs.d/savehist")
  '(savehist-mode t)
@@ -100,12 +71,10 @@
  '(use-dialog-box t)
  '(use-package-always-defer t)
  '(use-package-always-ensure t)
- '(use-package-verbose t)
  '(vc-diff-switches (quote ("--diff-cmd" "tkdiff")))
  '(visible-bell t)
  '(which-function-mode t)
- '(which-key-mode t)
- '(yas-global-mode t))
+ '(which-key-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
