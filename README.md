@@ -1,43 +1,43 @@
 
 # Table of Contents
 
-1.  [Overview](#org2c40478)
-    1.  [Quick start](#orgc7a9d31)
-    2.  [`init.el` explained](#org9799db6)
-2.  [Configuration](#org80b8fe3)
-    1.  [Just a little preamble](#org2ebf4d2)
-    2.  [General packages](#org749b533)
-        1.  [auto-compile](#orgfd9e6db)
-        2.  [diminish](#orgc8f58e1)
-        3.  [bind-key](#org63290dc)
-        4.  [savehist](#org59ab25a)
-        5.  [ag](#orgc3703f7)
-        6.  [powershell](#org34a1ada)
-        7.  [themes and modeline](#org066decc)
-        8.  [aspx editing](#orgf420cac)
-        9.  [Other useful packages](#org0f6cdc5)
-3.  [Working with C#](#org9588ffe)
-4.  [magit configuration](#org68b28da)
-5.  [org-mode configuration](#org2c76d23)
-6.  [python configuration](#org46a0e43)
-7.  [ivy configuration](#orgb4df2c5)
-8.  [yasnippet configuration](#orgf153269)
-9.  [Additional bits-o-configuration](#org6cae771)
-    1.  [Limit the length of `which-function`](#orgf9c7212)
-    2.  [`my-ansi-term`](#orga3a8844)
-    3.  [Understand file type by shebang](#org06b9189)
-    4.  [Additional configs](#orgd27a7ef)
+1.  [Overview](#org3c7124c)
+    1.  [Quick start](#orgadfd9c2)
+    2.  [`init.el` explained](#org8d3632b)
+2.  [Configuration](#orgb177e4b)
+    1.  [Just a little preamble](#org5efe49b)
+    2.  [General packages](#org14e2a63)
+        1.  [auto-compile](#org006b191)
+        2.  [diminish](#org40482cc)
+        3.  [bind-key](#org768a40a)
+        4.  [savehist](#orge826e4b)
+        5.  [ag](#orgda0da35)
+        6.  [powershell](#orge196842)
+        7.  [themes and modeline](#orgb107a22)
+        8.  [aspx editing](#orgd3a9eae)
+        9.  [Other useful packages](#org2ef93d7)
+3.  [Working with C#](#orgce69b6b)
+4.  [magit configuration](#org612a8f6)
+5.  [org-mode configuration](#org9ed6d4f)
+6.  [python configuration](#orgf825f11)
+7.  [ivy configuration](#org2955884)
+8.  [yasnippet configuration](#org9b8c061)
+9.  [Additional bits-o-configuration](#org8b671b5)
+    1.  [Limit the length of `which-function`](#orgfca9a51)
+    2.  [`my-ansi-term`](#orgc297119)
+    3.  [Understand file type by shebang](#org6c5cdea)
+    4.  [Additional configs](#org9f17957)
 
 
 
-<a id="org2c40478"></a>
+<a id="org3c7124c"></a>
 
 # Overview
 
 This is my literate and **portable** Emacs initialization "system."
 
 
-<a id="orgc7a9d31"></a>
+<a id="orgadfd9c2"></a>
 
 ## Quick start
 
@@ -50,7 +50,7 @@ The ability to simply clone and start makes this configuration **highly portable
 A minor warning is that Emacs load times can be somewhat slow. Startup continues to get slower as the size of the desktop file increases (the more files that need to be opened at the start of Emacs). Since I tend to stay in Emacs for quite some time, this doesn't get in my way.
 
 
-<a id="org9799db6"></a>
+<a id="org8d3632b"></a>
 
 ## `init.el` explained
 
@@ -91,15 +91,13 @@ Following this code block is the explanation.
 
 5.  Assures use-package is loaded; `use-package` is used to perform the remainder of this configuration.
 
-6.  Installs org. It ends up that the built-in org-mode is rather old and use-package seems to have issues forcing the installation. This little tibit, looks in the elpa directory
+6.  Installs org. It ends up that the built-in org-mode is rather old and use-package seems to have issues forcing the installation. This little tibit, looks in the elpa directory for an already (externally) provided org mode. If it is not found, then the external one will forcibly installed. This should only happen the first time you are populating the elpa directory. This happens when you start emacs just after cloning this repository.
 
-of the one from the org repository, although you can install from hand from the `M-x list-packages` buffer. To automate this, the code here works but might be a little fragile. For exmaple, if the version number isn't just a single number. This not only loads the org package from the org repository, it also makes sure it is up-to-date. The code could be guarded by finding any org-# directory under elpa and not installing.
-
-1.  Does the deed and loads this file. If the file has already been "babel-ed" then just load the results, otherwise do the "babel-ing".
+7.  Does the deed and loads this file. If the file has already been "babel-ed" then just load the results, otherwise do the "babel-ing".
 
 That's it. Used to be simpler, but had to account for overriding the built-in org-mode package.
 
-The package-refresh-contents in the above code depends upon:
+The `package-refresh-contents` in the above code depends upon:
 
 <table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
 
@@ -129,12 +127,12 @@ The package-refresh-contents in the above code depends upon:
 </table>
 
 
-<a id="org80b8fe3"></a>
+<a id="orgb177e4b"></a>
 
 # Configuration
 
 
-<a id="org2ebf4d2"></a>
+<a id="org5efe49b"></a>
 
 ## Just a little preamble
 
@@ -148,14 +146,14 @@ Also create a handy variable to know if we are Windows - used later on here.
     (defvar mswindows-p (string-match "windows" (symbol-name system-type)))
 
 
-<a id="org749b533"></a>
+<a id="org14e2a63"></a>
 
 ## General packages
 
 Here are some general packages
 
 
-<a id="orgfd9e6db"></a>
+<a id="org006b191"></a>
 
 ### [auto-compile](https://github.com/emacscollective/auto-compile)
 
@@ -168,7 +166,7 @@ This package provides a guarantee that compiled byte code files are never outdat
         (auto-compile-on-save-mode)))
 
 
-<a id="orgc8f58e1"></a>
+<a id="org40482cc"></a>
 
 ### [diminish](https://github.com/myrjola/diminish.el)
 
@@ -177,7 +175,7 @@ Handy mode to make the modeline nicer. I also use to set mode to special charact
     (use-package diminish)
 
 
-<a id="org63290dc"></a>
+<a id="org768a40a"></a>
 
 ### [bind-key](https://github.com/priyadarshan/bind-key)
 
@@ -186,7 +184,7 @@ Much better binding capabilities
     (use-package bind-key)
 
 
-<a id="org59ab25a"></a>
+<a id="orge826e4b"></a>
 
 ### savehist
 
@@ -236,7 +234,7 @@ A great builtin that allows us to have a history file. This means certain elemen
     (use-package savehist :demand t)                ;; Nice history in ~/.emacs.d/savehist
 
 
-<a id="orgc3703f7"></a>
+<a id="orgda0da35"></a>
 
 ### [ag](https://github.com/Wilfred/ag.el)
 
@@ -247,7 +245,7 @@ NB: doesn't seem to work so well under Windows.
     (use-package ag)
 
 
-<a id="org34a1ada"></a>
+<a id="orge196842"></a>
 
 ### [powershell](http://github.com/jschaf/powershell.el)
 
@@ -257,7 +255,7 @@ Excellent too to run powershell in Emacs
       :if mswindows-p)
 
 
-<a id="org066decc"></a>
+<a id="orgb107a22"></a>
 
 ### themes and modeline
 
@@ -267,7 +265,7 @@ Excellent too to run powershell in Emacs
       :config (powerline-default-theme))
 
 
-<a id="orgf420cac"></a>
+<a id="orgd3a9eae"></a>
 
 ### aspx editing
 
@@ -278,7 +276,7 @@ Make aspx editing more palatable using html mode
                  '("\\.aspcx\\'" . html-mode))
 
 
-<a id="org0f6cdc5"></a>
+<a id="org2ef93d7"></a>
 
 ### Other useful packages
 
@@ -306,7 +304,7 @@ Make sure to customize `projectile-completion-system` to "ivy".
       (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode))
 
 
-<a id="org9588ffe"></a>
+<a id="orgce69b6b"></a>
 
 # Working with C#
 
@@ -338,7 +336,7 @@ There are comprehensive directions at [omnisharp-emacs](https://github.com/OmniS
         (add-hook 'csharp-mode-hook 'omnisharp-mode)))
 
 
-<a id="org68b28da"></a>
+<a id="org612a8f6"></a>
 
 # [magit](https://github.com/magit/magit) configuration
 
@@ -358,7 +356,7 @@ The most awesome git porcelain. Most here are part of magit, `[[https://github.c
     (use-package git-timemachine)
 
 
-<a id="org2c76d23"></a>
+<a id="org9ed6d4f"></a>
 
 # org-mode configuration
 
@@ -374,7 +372,7 @@ The `htmlize` package allows for `org-html-export-to-html` to operate.
     (load-library "ox-md")      ;; Turn on MD exports
 
 
-<a id="org46a0e43"></a>
+<a id="orgf825f11"></a>
 
 # python configuration
 
@@ -415,7 +413,7 @@ The variables that might be setup for python (look in [custom.el](custom.el) for
         (add-hook 'python-mode-hook 'company-mode)))
 
 
-<a id="orgb4df2c5"></a>
+<a id="org2955884"></a>
 
 # ivy configuration
 
@@ -455,7 +453,7 @@ Was a help user, but switched to ivy. Lots of nice features in ivy
     (use-package avy)
 
 
-<a id="orgf153269"></a>
+<a id="org9b8c061"></a>
 
 # yasnippet configuration
 
@@ -487,12 +485,12 @@ This also takes care of hooking up company completion with yasnippet expansion.
     (setq company-backends (mapcar #'company-mode/backend-with-yas company-backends))
 
 
-<a id="org6cae771"></a>
+<a id="org8b671b5"></a>
 
 # Additional bits-o-configuration
 
 
-<a id="orgf9c7212"></a>
+<a id="orgfca9a51"></a>
 
 ## Limit the length of `which-function`
 
@@ -505,7 +503,7 @@ This also takes care of hooking up company completion with yasnippet expansion.
                                 (concat (truncate-string-to-width s (- which-function-max-width 3)) "...")))))
 
 
-<a id="orga3a8844"></a>
+<a id="orgc297119"></a>
 
 ## `my-ansi-term`
 
@@ -518,7 +516,7 @@ Allows me to name my ANSI terms. Was very useful when I used more ANSI shells (s
       (rename-buffer term-name))
 
 
-<a id="org06b9189"></a>
+<a id="org6c5cdea"></a>
 
 ## Understand file type by shebang
 
@@ -539,7 +537,7 @@ When a file is opened and it is determined there is no mode (fundamental-mode) t
     (add-hook 'find-file-hook 'my-find-file-hook)
 
 
-<a id="orgd27a7ef"></a>
+<a id="org9f17957"></a>
 
 ## Additional configs
 

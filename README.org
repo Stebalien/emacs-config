@@ -6,6 +6,7 @@
 #+HTML_HEAD:     td.org-left   { text-align: left; font-family: monospace; }
 #+HTML_HEAD: </style>
 #+AUTHOR: Adam Taylor
+#+EMAIL: mr.adtaylor@gmail.com
 #+TITLE: Adam Taylor's  Emacs Initialization
 
    #+NAME: custom-vars-table
@@ -70,14 +71,13 @@
 
    5. Assures use-package is loaded; ~use-package~ is used to perform the remainder of this configuration.
 
-   6. Installs org. It ends up that the built-in org-mode is rather old and use-package seems to have issues forcing the installation. This little tibit, looks in the elpa directory
- of the one from the org repository, although you can install from hand from the ~M-x list-packages~ buffer. To automate this, the code here works but might be a little fragile. For exmaple, if the version number isn't just a single number. This not only loads the org package from the org repository, it also makes sure it is up-to-date. The code could be guarded by finding any org-# directory under elpa and not installing.
+   6. Installs org. It ends up that the built-in org-mode is rather old and use-package seems to have issues forcing the installation. This little tibit, looks in the elpa directory for an already (externally) provided org mode. If it is not found, then the external one will forcibly installed. This should only happen the first time you are populating the elpa directory. This happens when you start emacs just after cloning this repository.
 
    7. Does the deed and loads this file. If the file has already been "babel-ed" then just load the results, otherwise do the "babel-ing".
 
    That's it. Used to be simpler, but had to account for overriding the built-in org-mode package.
 
-   The [[(pkg-refresh)][package-refresh-contents]] in the above code depends upon:
+   The [[(pkg-refresh)][~package-refresh-contents~]] in the above code depends upon:
 
    #+CALL: custom-vars-table(custom-vars='(package-archives))
    #+RESULTS:

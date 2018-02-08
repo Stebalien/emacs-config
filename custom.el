@@ -63,6 +63,12 @@
  '(omnisharp-server-executable-path "c:/omnisharp-roslyn-v1.27.2/OmniSharp.exe")
  '(org-catch-invisible-edits (quote show))
  '(org-clock-into-drawer "CLOCKING")
+ '(org-html-postamble t)
+ '(org-html-postamble-format
+   (quote
+    (("en" "<p class=\"author\">Author: %a (%e)</p>
+<p class=\"date\">Date: %T</p>
+<p class=\"creator\">%c</p>"))))
  '(org-html-table-default-attributes
    (quote
     (:border "2" :cellspacing "0" :cellpadding "6" :rules "all" :frame "border")))
@@ -73,6 +79,9 @@
     (("gnu" . "https://elpa.gnu.org/packages/")
      ("melpa" . "https://melpa.org/packages/")
      ("org" . "https://orgmode.org/elpa/"))))
+ '(package-selected-packages
+   (quote
+    (org yasnippet-snippets avy ivy-hydra counsel-etags counsel-projectile counsel python-docstring pylint flycheck-pyflakes elpy company-jedi company htmlize org-autolist org-bullets git-timemachine magit-find-file magit-filenotify magit git-commit omnisharp paredit which-key xterm-color ibuffer-projectile projectile realgud powerline use-package)))
  '(powerline-display-hud nil)
  '(projectile-completion-system (quote ivy))
  '(projectile-mode-line (quote (:eval (format " [%s]" (projectile-project-name)))))
