@@ -27,6 +27,9 @@
  '(compilation-error-regexp-alist (quote (ant bash java gnu gcc-include lcc perl)))
  '(compilation-error-regexp-systems-list (quote (gnu perl)))
  '(confirm-kill-emacs (quote yes-or-no-p))
+ '(custom-safe-themes
+   (quote
+    ("714cce50982cb5168cfdcc67732de25799ed7f7f0c62562adfa237dfd3eb1c75" "aff21e341a0486f72e2cd05ecf49c02c0b4b13f3839a8819f7ecf8d631f58990" default)))
  '(dabbrev-case-fold-search nil)
  '(desktop-save-mode t)
  '(diff-switches "-bc")
@@ -72,6 +75,9 @@
  '(magit-pull-arguments nil)
  '(magit-repository-directories (quote (("~/repos" . 1))))
  '(make-backup-files nil)
+ '(minions-direct (quote (flycheck-mode)))
+ '(minions-mode t)
+ '(minions-mode-line-lighter "#")
  '(omnisharp-auto-complete-popup-help-delay 1)
  '(omnisharp-server-executable-path "c:/omnisharp-roslyn-v1.27.2/OmniSharp.exe")
  '(org-catch-invisible-edits (quote show))

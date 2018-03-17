@@ -161,12 +161,6 @@
       (setq auto-window-vscroll nil)
     #+END_SRC
 
-*** [[https://github.com/myrjola/diminish.el][diminish]]
-    Handy mode to make the modeline more succinct by allowing a /diminished/ mode line string. Sometimes the fact that mode is there
-    is fine and it doesn't need to be on the mode line (diminish it to "").
-    #+BEGIN_SRC emacs-lisp :tangle yes
-      (use-package diminish)
-    #+END_SRC
 *** [[https://github.com/priyadarshan/bind-key][bind-key]]
     Much better binding capabilities
     #+BEGIN_SRC emacs-lisp :tangle yes
@@ -183,10 +177,16 @@
 
 *** Themes and mode line
     #+BEGIN_SRC emacs-lisp :tangle yes
-      (load-theme 'leuven t)                          ;; Theme: works better before powerline
-      (use-package powerline
-        :demand t
-        :config (powerline-default-theme))
+      (load-theme 'adams-leuven t)                          ;; Theme: works better before powerline
+      (use-package minions
+        :ensure t
+        :init (minions-mode))
+
+      ;; For some reason these don't work in the :config
+      (use-package moody)
+      (require 'moody)
+      (moody-replace-mode-line-buffer-identification)
+      (moody-replace-vc-mode)
     #+END_SRC
 *** Other useful packages
     OK, a little tired of documenting each package on it's own. These packages are just generally useful.
@@ -202,7 +202,7 @@
         (projectile-mode t))
       (use-package ibuffer-projectile)
       (use-package xterm-color)
-      (use-package which-key :demand t :diminish "")
+      (use-package which-key :demand t)
       (use-package sh-script)
       (use-package desktop
         :config
@@ -245,7 +245,6 @@
         (setq config/use-omnisharp (file-exists-p omnisharp))))
 
     (use-package omnisharp
-      :diminish "\u221e"                            ;; infinity symbol
       :if config/use-omnisharp
       :bind (:map omnisharp-mode-map
                   ("C-c o" . omnisharp-start-omnisharp-server)
@@ -360,7 +359,6 @@
 
   #+BEGIN_SRC emacs-lisp :tangle yes
     (use-package company
-      :diminish "Co"
       :config
       (when config/use-omnisharp
         (add-to-list 'company-backends 'company-omnisharp)))
@@ -391,7 +389,6 @@
   #+BEGIN_SRC emacs-lisp :tangle yes
     (use-package ivy
       :demand t
-      :diminish ""
       :bind (:map ivy-minibuffer-map
                   ("C-w" . ivy-yank-word)           ;; make work like isearch
                   ("C-r" . ivy-previous-line))
@@ -440,7 +437,6 @@
   #+BEGIN_SRC emacs-lisp :tangle yes
     (use-package warnings :demand t)
     (use-package yasnippet
-      :diminish (yas-minor-mode . "")
       :config
       (progn
         (yas-reload-all)
@@ -513,7 +509,6 @@
      (add-hook 'emacs-lisp-mode-hook 'eldoc-mode)    ;; Run elisp with eldoc-mode
      (fset 'list-buffers 'ibuffer)                   ;; prefer ibuffer over list-buffers
      (fset 'yes-or-no-p 'y-or-n-p)                   ;; for lazy people use y/n instead of yes/no
-     (diminish 'eldoc-mode "Doc")                    ;; Diminish eldoc-mode
 
      ;; Some key bindings
      (bind-key "C-x p" 'pop-to-mark-command)
