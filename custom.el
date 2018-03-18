@@ -75,7 +75,6 @@
  '(magit-pull-arguments nil)
  '(magit-repository-directories (quote (("~/repos" . 1))))
  '(make-backup-files nil)
- '(minions-direct (quote (flycheck-mode)))
  '(minions-mode t)
  '(minions-mode-line-lighter "#")
  '(omnisharp-auto-complete-popup-help-delay 1)
